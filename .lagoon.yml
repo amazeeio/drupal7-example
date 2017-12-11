@@ -1,0 +1,18 @@
+docker-compose-yaml: docker-compose.yml
+
+project: ci-drupal
+
+tasks:
+  post-rollout:
+    - run:
+        name: env variables
+        command: env
+        service: cli
+    - run:
+        name: IF no Drupal installed drush si with no email sending
+        command: |
+            if [[ $(drush core-status bootstrap --pipe) == "" ]]; then
+                # no drupal installed, we install drupal from scratch
+                drush si || true
+            fi
+        service: cli
