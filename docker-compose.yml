@@ -15,7 +15,7 @@ services:
       dockerfile: Dockerfile.nginx
     labels:
       lagoon.type: nginx-php
-      lagoon.name: nginx-php
+      lagoon.name: nginx
     volumes:
       - .:/app:delegated
     depends_on:
@@ -35,7 +35,7 @@ services:
       dockerfile: Dockerfile.php
     labels:
       lagoon.type: nginx-php
-      lagoon.name: nginx-php
+      lagoon.name: nginx
 ## Uncomment the following lines to enable xdebug in php and then restart the php container
 #    environment:
 #       - XDEBUG_ENABLE=true
@@ -54,7 +54,7 @@ services:
     labels:
       lagoon.type: redis
   varnish:
-    image: amazeeio/varnish
+    image: amazeeio/varnish-drupal
     labels:
       lagoon.type: varnish
     expose:
