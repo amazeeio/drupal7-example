@@ -18,15 +18,14 @@
  */
 
  ### Lagoon Database connection
- if(getenv('LAGOON')){
-   $mariadb_port = preg_replace('/.*:(\d{2,5})$/', '$1', getenv('MARIADB_PORT') ?: '3306'); // Kubernetes/OpenShift sets `*_PORT` by default as tcp://172.30.221.159:8983, extract the port from it
+ if (getenv('LAGOON')){
    $databases['default']['default'] = array(
      'driver' => 'mysql',
      'database' => getenv('MARIADB_DATABASE') ?: 'drupal',
      'username' => getenv('MARIADB_USERNAME') ?: 'drupal',
      'password' => getenv('MARIADB_PASSWORD') ?: 'drupal',
      'host' => getenv('MARIADB_HOST') ?: 'mariadb',
-     'port' => $mariadb_port,
+     'port' => 3306,
      'prefix' => '',
    );
  }
@@ -34,7 +33,7 @@
  ### Lagoon Solr connection
  // WARNING: you have to create a search_api server having "solr" machine name at
  // /admin/config/search/search-api/add-server to make this work.
- if(getenv('LAGOON')){
+ if (getenv('LAGOON')){
   // Override search API server settings fetched from default configuration.
   $conf['search_api_override_mode'] = 'load';
   $conf['search_api_override_servers']['solr']['name'] = 'Lagoon Solr - Environment:' . getenv('LAGOON_PROJECT');
@@ -85,7 +84,7 @@ if (file_exists(__DIR__ . '/all.settings.php')) {
 }
 
 // Environment specific settings files.
-if(getenv('LAGOON_ENVIRONMENT_TYPE')){
+if (getenv('LAGOON_ENVIRONMENT_TYPE')){
   if (file_exists(__DIR__ . '/' . getenv('LAGOON_ENVIRONMENT_TYPE') . '.settings.php')) {
     include __DIR__ . '/' . getenv('LAGOON_ENVIRONMENT_TYPE') . '.settings.php';
   }
