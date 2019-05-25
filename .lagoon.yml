@@ -16,7 +16,7 @@ tasks:
         service: cli
     - run:
         name: drush updb
-        command: drush updb --cache-clear=0
+        command: drush updb -y --cache-clear=0
         service: cli
     - run:
         name: drush cc all
