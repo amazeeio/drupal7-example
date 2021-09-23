@@ -12,3 +12,7 @@ $conf['cache_lifetime'] = 0;
 
 // Pages will be compressed by nginx, no need for Drupal to do that
 $conf['page_compression'] = 0;
+
+// Lagoon needs private files to exist inside the persistent storage, nginx protects them
+// from being accessed directly
+$conf['file_private_path`] = 'sites/default/files/private';
