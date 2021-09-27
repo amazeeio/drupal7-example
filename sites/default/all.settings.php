@@ -15,4 +15,4 @@ $conf['page_compression'] = 0;
 
 // Lagoon needs private files to exist inside the persistent storage, nginx protects them
 // from being accessed directly
-$conf['file_private_path`] = 'sites/default/files/private';
+$conf['file_private_path'] = 'sites/default/files/private';
