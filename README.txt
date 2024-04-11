@@ -1,3 +1,7 @@
+ARCHIVED
+--------
+
+Maintained examples can be found at https://github.com/lagoon-examples.
 
 CONTENTS OF THIS FILE
 ---------------------
